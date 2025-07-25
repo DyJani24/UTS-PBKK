@@ -15,7 +15,7 @@ class Categori extends Model
     'description',
     ];
 
-    protected $table = 'categories';
+    protected $table = 'categori';
 
     protected function casts(): array
     {
@@ -24,9 +24,7 @@ class Categori extends Model
         ];
     }
 
-    public function product():HasMany
-    {
-        return $this->hasMany(Product::class,'product_id');
+    public function product():HasMany{
+        return $this->hasMany(Categori::class,'category_id');
     }
-
 }

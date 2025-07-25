@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer', function (Blueprint $table) {
+        Schema::create('stock', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->string('name');
-            $table->string('email');
-            $table->string('password');
-            $table->string('phone');
-            $table->string('address');
+            $table->foreignUlid('product_id')->constrained('product')->cascadeOnDelete();
+            $table->integer('limit');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer');
+        Schema::dropIfExists('stock');
     }
 };
